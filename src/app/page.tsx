@@ -1,8 +1,10 @@
 "use client"
 import React, { useEffect, useState } from 'react';
 import { getProducts } from '@/sanity/lib/client';
+import { Image } from 'next-sanity/image';
 
-export default function HOme(){
+
+export default function Home(){
   const [products, setProducts] = useState<any[]>([]);
 
   useEffect(() => {
@@ -23,10 +25,12 @@ export default function HOme(){
                 key={product._id}
                 className="bg-white shadow-md rounded-lg p-4 hover:shadow-lg transition-shadow duration-300"
             >
-                <img
+                <Image
                     src={product.imageUrl}
                     alt={product.name}
-                    className="w-full h-48 object-cover rounded-md mb-4"
+                    width={700}
+                    height={600}
+                    className="w-full h-72 object-cover rounded-md mb-4"
                 />
                 <h2 className="text-xl font-semibold mb-2">{product.name}</h2>
                 <p className="text-gray-600 mb-1">Price: <span className="font-medium">${product.price}</span></p>
